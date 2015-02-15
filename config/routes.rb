@@ -1,7 +1,21 @@
+require 'api_constraints'
+
 Rails.application.routes.draw do
   resources :widgets
 
   root 'welcome#index'
+
+  namespace :api, defaults: { format: :json } do
+    # This scoped route allows us to access the /api/ route without needing to go through /api/v1/
+    scope module: :v1, constraints: ApiConstraints.new(version: 1, default: :true) do
+      resources :users do
+        resources :devices
+      end
+
+      resources :permited_apps
+    end
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
