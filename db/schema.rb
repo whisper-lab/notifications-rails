@@ -17,8 +17,11 @@ ActiveRecord::Schema.define(version: 20150215093624) do
   enable_extension "plpgsql"
 
   create_table "widgets", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "name"
+    t.text     "description"
+    t.integer  "stock"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
 end
