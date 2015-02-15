@@ -19,16 +19,15 @@ class AndroidAlertWorker
   def perform
     registration_ids = User.joins(:device).where('devices.platform = ?', 'android').
                           pluck('devices.token')
-      # Android's GCM implementation will also accept an array of registration_ids, reducing the number of
-      # requests we need to send (as long as our notification is common among all the devices)
-      gcm = GCM.new(ENV['gcm_key'])
-      options = {
-        'data' => {
-          'message' => "Hello from GCM!"
-        },
-          'collapse_key' => 'this_messages_key'
-      }
-      response = gcm.send_notification(registration_ids, options)
-    end
+    # Android's GCM implementation will also accept an array of registration_ids, reducing the number of
+    # requests we need to send (as long as our notification is common among all the devices)
+    gcm = GCM.new(ENV['gcm_key'])
+    options = {
+      'data' => {
+        'message' => "Hello from GCM!"
+      },
+        'collapse_key' => 'this_messages_key'
+    }
+    response = gcm.send_notification(registration_ids, options)
   end
 end
