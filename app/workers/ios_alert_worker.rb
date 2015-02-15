@@ -1,6 +1,6 @@
 class IosAlertWorker
   include Sidekiq::Worker
-  include Sidekiq::Schedulable
+  include Sidetiq::Schedulable
 
   # Sidetiq should schedule this job every half hour between 08:30 - 16:30 every Monday-Friday.
   # Note: The job will be queued at this time, not executed.
@@ -26,7 +26,7 @@ class IosAlertWorker
 
     User.joins(:device).where('devices.platform = ?', 'ios').pluck('devices.token').each do |token|
       notification = Grocer::Notification.new(
-        device_token:      token
+        device_token:      token,
         alert:             "Hello from Grocer!",
         badge:             42,
         sound:             "siren.aiff",         # optional

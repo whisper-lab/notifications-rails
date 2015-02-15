@@ -2,7 +2,7 @@ require 'gcm'
 
 class AndroidAlertWorker
   include Sidekiq::Worker
-  include Sidekiq::Schedulable
+  include Sidetiq::Schedulable
 
   # Sidetiq should schedule this job every day, Monday-Friday, at 08:30
   # Note: The job will be queued at this time, not executed.
