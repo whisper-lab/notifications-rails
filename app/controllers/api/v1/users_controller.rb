@@ -3,6 +3,8 @@ require 'core_ext/string'
 module Api
   module V1
     class UsersController < ApplicationController
+      before_action :authenticate_app_from_token!
+
       def destroy
         @user = User.friendly.find(params[:id].friendlyerize)
 
@@ -53,6 +55,13 @@ module Api
       def user_params
         params.require(:user).permit(:email, :lat, :lng, :sex, device_attributes: [:token, :platform])
       end
+
+      protected
+        def authenticate_app_from_token!
+          authenticate_or_request_with_http_token do |token, options|
+            @permitted_app = PermittedApp.where(authentication_token: token).first
+          end
+        end
     end
   end
 end
