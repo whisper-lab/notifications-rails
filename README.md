@@ -7,3 +7,13 @@ curl http://localhost:3000/api/users.json -H 'Content-Type: application/json' -H
 
 
 hide app, when send notification
+
+
+redis-server
+redis-cli
+----- flushdb
+
+rerun foreman start
+foreman run rake db:migrate
+foreman run rails console
+git push heroku master
