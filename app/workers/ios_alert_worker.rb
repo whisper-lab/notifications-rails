@@ -27,7 +27,7 @@ class IosAlertWorker
     pusher = Grocer.pusher(
       certificate: file.path,                # required
       passphrase:  "",                       # optional
-      gateway:     "gateway.push.apple.com", # optional
+      gateway:     "gateway.sandbox.push.apple.com", # optional
       port:        2195,                     # optional
       retries:     3                         # optional
     )
@@ -43,6 +43,18 @@ class IosAlertWorker
         content_available: true                  # optional; any truthy value will set 'content-available' to 1
       )
       pusher.push(notification)
+    end
+
+    feedback = Grocer.feedback(
+        certificate: file.path,                 # required
+        passphrase:  "",                        # optional
+        gateway:     "feedback.push.apple.com", # optional; See note below.
+        port:        2196,                      # optional
+        retries:     3                          # optional
+    )
+
+    feedback.each do |attempt|
+      puts "Device #{attempt.device_token} failed at #{attempt.timestamp}"
     end
 
     # delete the temporary file
