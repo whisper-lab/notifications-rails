@@ -30,6 +30,8 @@ gem 'jbuilder', '~> 2.0'
 gem 'sidekiq'
 gem 'sidetiq'
 
+gem 'aws-sdk'
+
 # IOS notifications
 gem 'grocer'
 

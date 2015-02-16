@@ -15,9 +15,17 @@ class IosAlertWorker
   sidekiq_options :queue => :ios_alert_worker_queue, backtrace: true, retry: true
 
   def perform
+    fname = "tempfile.pem"
+    # open the file, and copy the contents from the file on AWS-S3
+    File.open(fname, 'wb') do |fo|
+      # fo.print open(Aws::S3::S3Object.url_for('certificate.pem', S3_BUCKET_PNS)).read
+      fo.print S3_BUCKET_PNS.object('certificate.pem').get.body.read
+    end
+    file = File.new(fname)
+
     # Keep the connection to gateway.push.apple.com open throughout the duration of this job
     pusher = Grocer.pusher(
-      certificate: "/path/to/cert.pem",      # required
+      certificate: file.path,                # required
       passphrase:  "",                       # optional
       gateway:     "gateway.push.apple.com", # optional
       port:        2195,                     # optional
@@ -36,5 +44,8 @@ class IosAlertWorker
       )
       pusher.push(notification)
     end
+
+    # delete the temporary file
+    File.delete(fname)
   end
 end
