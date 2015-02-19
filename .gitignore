@@ -13,6 +13,8 @@
 /tmp
 
 .env
+# Ignore redis dump.
+dump.rdb
 
 *~
 *.swp
