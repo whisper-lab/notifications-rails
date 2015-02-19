@@ -10,6 +10,10 @@ gem 'rails', '4.2.0'
 gem 'pg'
 
 gem 'redis'
+
+gem 'country_select'
+gem 'simple_form'
+gem 'bootstrap-sass', '~> 3.3.3'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -25,6 +29,8 @@ gem 'jquery-rails'
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
+
+gem 'rails-footnotes', '~> 4.0', :group => :development
 
 # Background jobs
 gem 'sidekiq'
