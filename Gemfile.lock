@@ -51,6 +51,7 @@ GEM
       multi_xml (~> 0.5)
     aws-sdk-resources (2.0.26)
       aws-sdk-core (= 2.0.26)
+    bcrypt (3.1.10)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     bootstrap-sass (3.3.3)
@@ -79,6 +80,13 @@ GEM
     currencies (0.4.2)
     debug_inspector (0.0.2)
     debugger-linecache (1.2.0)
+    devise (3.4.1)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 3.2.6, < 5)
+      responders
+      thread_safe (~> 0.1)
+      warden (~> 1.2.3)
     erubis (2.7.0)
     execjs (2.3.0)
     friendly_id (5.1.0)
@@ -117,6 +125,7 @@ GEM
     multi_xml (0.5.5)
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
+    orm_adapter (0.5.0)
     pg (0.18.1)
     puma (2.11.1)
       rack (>= 1.1, < 2.0)
@@ -141,8 +150,6 @@ GEM
       activesupport (>= 4.2.0.beta, < 5.0)
       nokogiri (~> 1.6.0)
       rails-deprecated_sanitizer (>= 1.0.1)
-    rails-footnotes (4.1.5)
-      rails (>= 3.2)
     rails-html-sanitizer (1.0.1)
       loofah (~> 2.0)
     rails_12factor (0.0.3)
@@ -160,6 +167,8 @@ GEM
     redis (3.2.1)
     redis-namespace (1.5.1)
       redis (~> 3.0, >= 3.0.4)
+    responders (2.1.0)
+      railties (>= 4.2.0, < 5)
     sass (3.4.12)
     sass-rails (5.0.1)
       railties (>= 4.0.0, < 5.0)
@@ -206,6 +215,8 @@ GEM
     uglifier (2.7.0)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    warden (1.2.3)
+      rack (>= 1.0)
     web-console (2.0.0)
       activemodel (~> 4.0)
       binding_of_caller (>= 0.7.2)
@@ -222,6 +233,7 @@ DEPENDENCIES
   byebug
   coffee-rails (~> 4.1.0)
   country_select
+  devise
   friendly_id (~> 5.1.0)
   gcm
   grocer
@@ -231,7 +243,6 @@ DEPENDENCIES
   puma
   rack-timeout
   rails (= 4.2.0)
-  rails-footnotes (~> 4.0)
   rails_12factor
   redis
   sass-rails (~> 5.0)

@@ -11,6 +11,7 @@ gem 'pg'
 
 gem 'redis'
 
+gem 'devise'
 gem 'country_select'
 gem 'simple_form'
 gem 'bootstrap-sass', '~> 3.3.3'
@@ -30,7 +31,7 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 
-gem 'rails-footnotes', '~> 4.0', :group => :development
+# gem 'rails-footnotes', '~> 4.0', :group => :development
 
 # Background jobs
 gem 'sidekiq'

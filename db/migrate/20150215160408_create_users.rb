@@ -1,7 +1,7 @@
 class CreateUsers < ActiveRecord::Migration
   def change
     create_table :users do |t|
-      t.text :email
+      #t.text :email
       t.text :sex
 
       t.decimal :lat

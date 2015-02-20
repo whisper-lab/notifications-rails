@@ -28,7 +28,7 @@ class WidgetsController < ApplicationController
 
     respond_to do |format|
       if @widget.save
-        format.html { redirect_to @widget, notice: 'Widget was successfully created.' }
+        format.html { redirect_to @widget, flash: { success: 'Widget was successfully created.' } }
         format.json { render :show, status: :created, location: @widget }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class WidgetsController < ApplicationController
   def update
     respond_to do |format|
       if @widget.update(widget_params)
-        format.html { redirect_to @widget, notice: 'Widget was successfully updated.' }
+        format.html { redirect_to @widget, flash: { success: 'Widget was successfully updated.' } }
         format.json { render :show, status: :ok, location: @widget }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class WidgetsController < ApplicationController
   def destroy
     @widget.destroy
     respond_to do |format|
-      format.html { redirect_to widgets_url, notice: 'Widget was successfully destroyed.' }
+      format.html { redirect_to widgets_url, flash: { success: 'Widget was successfully destroyed.' } }
       format.json { head :no_content }
     end
   end

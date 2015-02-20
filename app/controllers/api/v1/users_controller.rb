@@ -48,12 +48,12 @@ module Api
         if @user.save
           render json: @user
         else
-          render :new
+          render json: @user.errors.to_json, status: :unprocessable_entity
         end
       end
 
       def user_params
-        params.require(:user).permit(:email, :lat, :lng, :sex, device_attributes: [:token, :platform])
+        params.require(:user).permit(:email, :password, :lat, :lng, :sex, device_attributes: [:token, :platform])
       end
 
       protected
