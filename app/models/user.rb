@@ -1,3 +1,5 @@
+require 'core_ext/string'
+
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
