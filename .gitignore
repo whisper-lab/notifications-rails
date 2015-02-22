@@ -12,10 +12,22 @@
 !/log/.keep
 /tmp
 
+# Ignore file with localhost evnironment settings.
 .env
+
 # Ignore redis dump.
 dump.rdb
 
+#########################
+# Ignore editors files.
+
+# vim tmp files
 *~
 *.swp
 *.swo
+
+# Idea project files
+.idea/
+*.iml
+*.iws
+
