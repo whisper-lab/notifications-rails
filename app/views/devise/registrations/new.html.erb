@@ -18,6 +18,19 @@
       <%= f.label :password_confirmation %>
       <%= f.password_field :password_confirmation, class: 'form-control' %>
     </div>
+    <div class="form-group">
+      <%= f.label :sex %>
+      <div class="radio">
+        <label>
+          <%= f.radio_button :sex, :male %> Male
+        </label>
+      </div>
+      <div class="radio">
+        <label>
+          <%= f.radio_button :sex, :female %> Female
+        </label>
+      </div>
+    </div>
      <%= f.submit 'Sign up', :class => 'button right' %>
   <% end %>
 </div>

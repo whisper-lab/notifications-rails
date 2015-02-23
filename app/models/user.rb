@@ -1,6 +1,8 @@
 require 'core_ext/string'
 
 class User < ActiveRecord::Base
+  validates :name, presence: true
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -10,7 +12,7 @@ class User < ActiveRecord::Base
 
   has_one :device, dependent: :destroy
 
-  validates :name, :email, presence: true
+  validates :sex, presence: true
 
   accepts_nested_attributes_for :device
 
