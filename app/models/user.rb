@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
 
   has_one :device, dependent: :destroy
 
-  validates :sex, presence: true
+  validates :sex, inclusion: %w(male female), presence: true
 
   accepts_nested_attributes_for :device
 
