@@ -44,7 +44,8 @@ ActiveRecord::Schema.define(version: 20150219204657) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.text     "sex"
+    t.string   "name"
+    t.string   "sex"
     t.decimal  "lat"
     t.decimal  "lng"
     t.datetime "created_at",                          null: false
