@@ -53,7 +53,7 @@ module Api
       end
 
       def user_params
-        params.require(:user).permit(:email, :password, :lat, :lng, :sex, device_attributes: [:token, :platform])
+        params.require(:user).permit(:name, :email, :password, :sex, :lat, :lng, device_attributes: [:token, :platform])
       end
 
       protected
