@@ -13,7 +13,7 @@ Rails.application.routes.draw do
         resources :devices
       end
 
-      resources :permited_apps
+      post 'auth' => 'sessions#create', :as => :auth
     end
   end
 
