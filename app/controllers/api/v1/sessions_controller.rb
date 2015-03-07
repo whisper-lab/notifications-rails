@@ -14,11 +14,12 @@ class Api::V1::SessionsController < ApplicationController
       unless @user.nil?
         format.json {
           render json: {
+            id: @user.id,
             api_key: @user.api_key
           }
         }
       else
-        format.json { render json: 'wrong email or password', status: :unauthorized }
+        format.json { render json: { message: 'wrong email or password' }, status: :unauthorized }
       end
     end
   end

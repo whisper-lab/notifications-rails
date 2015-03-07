@@ -7,7 +7,11 @@ module Api
       before_action :authenticate, except: [:create]
 
       def destroy
-        @user = @current_user #User.friendly.find(params[:id].friendlyerize)
+        @user = User.friendly.find(params[:id].friendlyerize)
+
+        if @user.nil? or @user.id != @current_user.id
+          return render json: { message: 'Forbidden' }, status: :forbidden
+        end
 
         if @user.destroy
           render json: { status: :ok }
@@ -17,7 +21,12 @@ module Api
       end
 
       def update
-        @user = @current_user #User.friendly.find(params[:id].friendlyerize)
+        @user = User.friendly.find(params[:id].friendlyerize)
+
+        if @user.nil? or @user.id != @current_user.id
+          return render json: { message: 'Forbidden' }, status: :forbidden
+        end
+
         @user.assign_attributes(user_params)
         if @user.save
           render json: @user, status: :ok
@@ -35,7 +44,11 @@ module Api
       end
 
       def show
-        @user = @current_user #User.friendly.find(params[:id].friendlyerize)
+        @user = User.friendly.find(params[:id].friendlyerize)
+
+        if @user.nil? or @user.id != @current_user.id
+          return render json: { message: 'Forbidden' }, status: :forbidden
+        end
 
         respond_to do |format|
           format.json { render json: @user }

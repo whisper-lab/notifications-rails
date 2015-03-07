@@ -26,7 +26,7 @@ curl http://localhost:3000/api/auth -H 'Content-Type: application/json' -H 'Auth
 
 curl http://localhost:3000/api/users -H 'Content-Type: application/json' -H 'Authorization: Token token="email:API_KEY"' -v
 
-curl --request PATCH http://localhost:3000/api/users/2 -H 'Content-Type: application/json' -H 'Authorization: Token token="lesha.pus@gmail.com:API_KEY"' -d '{"user":"{"lng":"1"}"}' -v
+curl --request PATCH http://localhost:3000/api/users/2 -H 'Content-Type: application/json' -H 'Authorization: Token token="lesha.pus@gmail.com:API_KEY"' -d '{"user":{"lng":"1"}}' -v
 
 curl --request DELETE http://localhost:3000/api/users/2 -H 'Content-Type: application/json' -H 'Authorization: Token token="lesha.pus@gmail.com:API_KEY"'  -v
 
