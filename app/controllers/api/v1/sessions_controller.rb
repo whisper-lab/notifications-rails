@@ -23,12 +23,4 @@ class Api::V1::SessionsController < ApplicationController
       end
     end
   end
-
-  protected
-
-    def authenticate_app_from_token!
-      authenticate_or_request_with_http_token do |token, options|
-        @permitted_app = PermittedApp.where(authentication_token: token).first
-      end
-    end
 end
