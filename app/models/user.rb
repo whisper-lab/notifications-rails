@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   friendly_id :email, use: :slugged
 
   has_one :device, dependent: :destroy
+  has_many :channels
 
   validates :sex, inclusion: %w(male female)
 
