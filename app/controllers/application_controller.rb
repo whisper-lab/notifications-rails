@@ -20,7 +20,8 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    stored_location_for :user || channels_path
+    path = stored_location_for :user
+    path ? path : channels_path
     # root_path
   end
 
