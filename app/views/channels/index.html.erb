@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row">
+    <h3>Channels</h3>
+    <div class="column">
+      <table class="table">
+        <tbody>
+          <% @channels.each do |channel| %>
+            <tr>
+              <%= render channel %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
