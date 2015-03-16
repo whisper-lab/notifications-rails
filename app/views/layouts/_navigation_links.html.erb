@@ -1,5 +1,6 @@
 <%# add navigation links to this file %>
 <% if user_signed_in? %>
   <li class="<%= 'active' if params[:controller] == 'channels' %>"><%= link_to 'Channels', channels_path %></li>
+  <li class="<%= 'active' if params[:controller] == 'subscriptions' %>"><%= link_to 'Subscriptions', subscriptions_path %></li>
 <% else %>
 <% end %>

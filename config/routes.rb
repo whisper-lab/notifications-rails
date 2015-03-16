@@ -1,6 +1,7 @@
 require 'api_constraints'
 
 Rails.application.routes.draw do
+  resources :subscriptions, except: [:edit, :update]
   resources :channels
 
   devise_for :users
@@ -11,8 +12,8 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     # This scoped route allows us to access the /api/ route without needing to go through /api/v1/
     scope module: :v1, constraints: ApiConstraints.new(version: 1, default: :true) do
-      resources :users do
-        resources :devices
+      resources :users, except: [:new] do
+        resources :devices, except: [:edit, :create, :new]
       end
 
       post 'auth' => 'sessions#create', :as => :auth

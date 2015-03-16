@@ -1,24 +1,25 @@
 <div class="container">
   <div class="pull-left">
-    <h4>Channels</h4>
+    <h4>Subscriptions</h4>
   </div>
   <div class="pull-right">
-    <%= link_to content_tag("span", "", class: "glyphicon glyphicon-plus") + " New Channel", new_channel_path, class: "btn btn-success btn-sm" %>
+    <%= link_to content_tag("span", "", class: "glyphicon glyphicon-plus") + " New Subscription", new_subscription_path, class: "btn btn-success btn-sm" %>
   </div>
   <div class="clearfix"></div>
 
   <table class="table">
     <thead>
       <tr>
-        <th>ID</th>
+        <th>Channel</th>
         <th>Name</th>
         <th>Description</th>
+        <th>Subscription Date</th>
       </tr>
     </thead>
     <tbody>
-      <% @channels.each do |channel| %>
+      <% @subscriptions.each do |subscription| %>
         <tr>
-          <%= render channel %>
+          <%= render subscription %>
         </tr>
       <% end %>
     </tbody>

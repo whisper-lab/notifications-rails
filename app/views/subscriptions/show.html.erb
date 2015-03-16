@@ -1,0 +1,18 @@
+<div class="container">
+  <ol class="breadcrumb">
+    <li><%= link_to 'Subscriptions', subscriptions_path %></li>
+    <li class="active"><%= raw(@subscription.channel.name) %></li>
+  </ol>
+  <div class="pull-left">
+    <h4>Subscription</h4>
+  </div>
+  <div class="pull-right">
+    <%= link_to "Unsubscribe", @subscription, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %>
+  </div>
+  <div class="clearfix"></div>
+  <br>
+  <p>Channel: <%= @subscription.channel.id if @subscription.channel.id %></p>
+  <p>Name: <%= @subscription.channel.name if @subscription.channel.name %></p>
+  <p>Description: <%= @subscription.channel.description if @subscription.channel.description %></p>
+  <p>Subscription Date: <%= @subscription.subscription_date if @subscription.subscription_date %></p>
+</div>

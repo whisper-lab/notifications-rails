@@ -1,0 +1,11 @@
+<div class="container">
+  <ol class="breadcrumb">
+    <li><%= link_to 'Subscriptions', subscriptions_path %></li>
+    <li><%= link_to raw(@subscription.channel.name), @subscription %></li>
+    <li class="active">Edit</li>
+  </ol>
+
+  <h3>Editing subscription</h3>
+
+  <%= render 'form' %>
+</div>

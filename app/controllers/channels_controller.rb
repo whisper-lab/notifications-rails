@@ -13,7 +13,7 @@ class ChannelsController < ApplicationController
   end
 
   def new
-    @channel = Channel.new
+    @channel = current_user.channels.new
   end
 
   def edit
