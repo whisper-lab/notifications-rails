@@ -3,7 +3,15 @@
     <li><%= link_to 'Channels', channels_path %></li>
     <li class="active"><%= raw(@channel.name) %></li>
   </ol>
-  <h3>Channel</h3>
+  <div class="pull-left">
+    <h4>Channel</h4>
+  </div>
+  <div class="pull-right">
+    <%= link_to "edit", edit_channel_path(@channel), class: "btn btn-warning btn-sm" %> |
+    <%= link_to "destroy", @channel, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %>
+  </div>
+  <div class="clearfix"></div>
+  <br>
   <p>Name: <%= @channel.name if @channel.name %></p>
   <p>Description: <%= @channel.description if @channel.description %></p>
 </div>
