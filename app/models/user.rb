@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   has_one :device, dependent: :destroy
   has_many :channels
   has_many :subscriptions
-  has_many :subscribed_channels, through: :subscriptions, source: :channel
+  has_many :subscribed_channels, -> { uniq }, through: :subscriptions, source: :channel
 
   validates :sex, inclusion: %w(male female)
 

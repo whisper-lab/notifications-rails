@@ -4,6 +4,8 @@ class Subscription < ActiveRecord::Base
   belongs_to :user
   belongs_to :channel
 
+  validates :channel_id, uniqueness: {scope: :user_id}
+
   private
 
     def set_subscription_date_to_now
