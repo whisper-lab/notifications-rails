@@ -54,8 +54,8 @@ ActiveRecord::Schema.define(version: 20150315123927) do
   end
 
   create_table "subscriptions", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "channel_id"
+    t.integer  "user_id",           null: false
+    t.integer  "channel_id",        null: false
     t.datetime "subscription_date"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false

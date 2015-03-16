@@ -4,7 +4,8 @@ class Subscription < ActiveRecord::Base
   belongs_to :user
   belongs_to :channel
 
-  validates :channel_id, uniqueness: {scope: :user_id}
+  validates :user_id, presence: true
+  validates :channel_id, uniqueness: {scope: :user_id}, presence: true
 
   private
 
