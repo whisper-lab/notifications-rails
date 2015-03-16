@@ -7,21 +7,23 @@
   </div>
   <div class="clearfix"></div>
 
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Channel</th>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Subscription Date</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @subscriptions.each do |subscription| %>
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
         <tr>
-          <%= render subscription %>
+          <th>Channel</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Subscription Date</th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        <% @subscriptions.each do |subscription| %>
+          <tr>
+            <%= render subscription %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>

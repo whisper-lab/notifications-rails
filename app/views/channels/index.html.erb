@@ -7,20 +7,22 @@
   </div>
   <div class="clearfix"></div>
 
-  <table class="table">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @channels.each do |channel| %>
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
         <tr>
-          <%= render channel %>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Description</th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        <% @channels.each do |channel| %>
+          <tr>
+            <%= render channel %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>
