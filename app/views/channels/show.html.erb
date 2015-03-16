@@ -7,8 +7,8 @@
     <h4>Channel</h4>
   </div>
   <div class="pull-right">
-    <%= link_to "edit", edit_channel_path(@channel), class: "btn btn-warning btn-sm" %> |
-    <%= link_to "destroy", @channel, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %>
+    <%= link_to content_tag("span", "", class: "glyphicon glyphicon-cog") + " Edit", edit_channel_path(@channel), class: "btn btn-warning btn-sm" %>
+    <%= link_to "Destroy", @channel, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %>
   </div>
   <div class="clearfix"></div>
   <br>
