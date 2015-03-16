@@ -5,10 +5,9 @@ module Api
     class UsersController < ApplicationController
       before_action :authenticate_app_from_token!, only: [:create]
       before_action :authenticate, except: [:create]
+      before_action :set_user, only: [:show, :update, :destroy]
 
       def destroy
-        @user = User.friendly.find(params[:id].friendlyerize)
-
         if @user.nil? or @user.id != @current_user.id
           return render json: { message: 'Forbidden' }, status: :forbidden
         end
@@ -21,8 +20,6 @@ module Api
       end
 
       def update
-        @user = User.friendly.find(params[:id].friendlyerize)
-
         if @user.nil? or @user.id != @current_user.id
           return render json: { message: 'Forbidden' }, status: :forbidden
         end
@@ -44,8 +41,6 @@ module Api
       end
 
       def show
-        @user = User.friendly.find(params[:id].friendlyerize)
-
         if @user.nil? or @user.id != @current_user.id
           return render json: { message: 'Forbidden' }, status: :forbidden
         end
@@ -66,9 +61,15 @@ module Api
         end
       end
 
-      def user_params
-        params.require(:user).permit(:name, :email, :password, :sex, :lat, :lng, device_attributes: [:token, :platform])
-      end
+      private
+
+        def set_user
+          @user = User.friendly.find(params[:id].friendlyerize)
+        end
+
+        def user_params
+          params.require(:user).permit(:name, :email, :password, :sex, :lat, :lng, device_attributes: [:token, :platform])
+        end
     end
   end
 end
