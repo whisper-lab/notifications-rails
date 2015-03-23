@@ -41,6 +41,9 @@ class IosAlertWorker
       User.joins(:device, {:subscriptions => {:channel => :messages}})
           .where('devices.platform' => 'ios', 'messages.sent' => nil)
           .pluck('devices.token','channels.name','messages.title','messages.body','messages.id').each do |token, channel_name, title, body, message_id|
+        if title.nil? or title.empty?
+          title = channel_name
+        end
         notification = Grocer::Notification.new(
           device_token:      token,
           alert:             {title: title || channel_name, body: body},
