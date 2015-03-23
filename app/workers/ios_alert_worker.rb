@@ -50,7 +50,7 @@ class IosAlertWorker
       feedback = Grocer.feedback(
           certificate: file.path,                 # required
           passphrase:  "",                        # optional
-          gateway:     "feedback.push.apple.com", # optional; See note below.
+          gateway:     "feedback.sandbox.push.apple.com", # optional; See note below.
           port:        2196,                      # optional
           retries:     3                          # optional
       )
