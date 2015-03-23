@@ -40,7 +40,8 @@ class IosAlertWorker
 
       User.joins(:device, {:subscriptions => {:channel => :messages}})
           .where('devices.platform' => 'ios', 'messages.sent' => nil)
-          .pluck('devices.token','channels.name','messages.title','messages.body','messages.id').each do |token, channel_name, title, body, message_id|
+          .pluck('devices.token','channels.id','channels.name','messages.title','messages.body','messages.id')
+          .each do |token, channel_id, channel_name, title, body, message_id, message_date|
         if title.nil? or title.empty?
           title = channel_name
         end
@@ -51,7 +52,11 @@ class IosAlertWorker
           sound:             "siren.aiff",         # optional
           expiry:            Time.now + 60*60,     # optional; 0 is default, meaning the message is not stored
           identifier:        1234,                 # optional
-          content_available: true                  # optional; any truthy value will set 'content-available' to 1
+          content_available: true,                  # optional; any truthy value will set 'content-available' to 1
+          custom: {
+            channel: {id: channel_id, name: channel_name},
+            message: {id: message_id, date: message_date}
+          }
         )
         pusher.push(notification)
         message = Message.find(message_id)
