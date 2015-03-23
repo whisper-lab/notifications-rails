@@ -40,10 +40,10 @@ class IosAlertWorker
 
       User.joins(:device, {:subscriptions => {:channel => :messages}})
           .where('devices.platform' => 'ios', 'messages.sent' => nil)
-          .pluck('devices.token','messages.title','messages.body','messages.id').each do |token, title, body, message_id|
+          .pluck('devices.token','channels.name','messages.title','messages.body','messages.id').each do |token, channel_name, title, body, message_id|
         notification = Grocer::Notification.new(
           device_token:      token,
-          alert:             {title: title, body: body},
+          alert:             {title: title || channel_name, body: body},
           badge:             42,
           sound:             "siren.aiff",         # optional
           expiry:            Time.now + 60*60,     # optional; 0 is default, meaning the message is not stored
