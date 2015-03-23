@@ -1,0 +1,20 @@
+<div class="container">
+  <ol class="breadcrumb">
+    <li><%= link_to 'Channels', channels_path %></li>
+    <li><%= link_to raw(@channel.name), @channel %></li>
+    <li><%= link_to 'Messages', channel_messages_path(@channel) %></li>
+    <li class="active"><%= raw(@message.title || @message.id) %></li>
+  </ol>
+  <div class="pull-left">
+    <h4>Message</h4>
+  </div>
+  <div class="pull-right">
+    <%= link_to "Destroy", [@channel,@message], method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %>
+  </div>
+  <div class="clearfix"></div>
+  <br>
+  <p>Title: <%= @message.title if @message.title %></p>
+  <p>Body: <%= @message.body if @message.body %></p>
+  <p>Date: <%= @message.date if @message.date %></p>
+  <p>Status: <%= if @message.sent then "sent" else "pending" end %></p>
+</div>

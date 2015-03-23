@@ -1,0 +1,12 @@
+<div class="container">
+  <ol class="breadcrumb">
+    <li><%= link_to 'Channels', channels_path %></li>
+    <li><%= link_to raw(@channel.name), @channel %></li>
+    <li><%= link_to 'Messages', channel_messages_path(@channel) %></li>
+    <li class="active">New Message</li>
+  </ol>
+
+  <h3>New Message</h3>
+
+  <%= render 'form' %>
+</div>

@@ -1,0 +1,35 @@
+<div class="container">
+  <ol class="breadcrumb">
+    <li><%= link_to 'Channels', channels_path %></li>
+    <li><%= link_to raw(@channel.name), @channel %></li>
+    <li class="active">Messages</li>
+  </ol>
+
+  <div class="pull-left">
+    <h4>Messages</h4>
+  </div>
+  <div class="pull-right">
+    <%= link_to content_tag("span", "", class: "glyphicon glyphicon-plus") + " New Message", new_channel_message_path(@channel), class: "btn btn-success btn-sm" %>
+  </div>
+  <div class="clearfix"></div>
+
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Body</th>
+          <th>Date</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @messages.each do |message| %>
+          <tr>
+            <%= render message %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

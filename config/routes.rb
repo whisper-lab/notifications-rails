@@ -2,7 +2,9 @@ require 'api_constraints'
 
 Rails.application.routes.draw do
   resources :subscriptions, except: [:edit, :update]
-  resources :channels
+  resources :channels do
+    resources :messages, except: [:edit, :update]
+  end
 
   devise_for :users
   resources :widgets

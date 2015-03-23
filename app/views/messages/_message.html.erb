@@ -1,0 +1,4 @@
+<td><%= link_to raw(message.title), [@channel,message] %></td>
+<td><%= link_to raw(message.body) || "- - -", [@channel,message] %></td>
+<td><%= link_to raw(message.date), [@channel,message] %></td>
+<td><%= if message.sent then "sent" else "pending" end %></td>
