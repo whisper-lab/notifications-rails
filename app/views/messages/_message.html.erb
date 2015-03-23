@@ -1,11 +1,4 @@
-<%
-   if (message.title.nil? || message.title.empty?)
-     title = raw(@channel.name)
-   else
-     title = raw(message.title)
-   end
-%>
-<td><%= link_to title, [@channel,message] %></td>
+<td><%= link_to get_formatted_title(message), [@channel,message] %></td>
 <td><%= link_to raw(message.body) || "- - -", [@channel,message] %></td>
 <td><%= link_to raw(message.date), [@channel,message] %></td>
 <td><%= if message.sent then "sent" else "pending" end %></td>

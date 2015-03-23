@@ -13,8 +13,8 @@
   </div>
   <div class="clearfix"></div>
   <br>
-  <p>Title: <%= @message.title if @message.title %></p>
-  <p>Body: <%= @message.body if @message.body %></p>
+  <p>Title: <%= get_formatted_title(@message) %></p>
+  <p>Body: <pre><%= @message.body if @message.body %></pre></p>
   <p>Date: <%= @message.date if @message.date %></p>
   <p>Status: <%= if @message.sent then "sent" else "pending" end %></p>
 </div>
