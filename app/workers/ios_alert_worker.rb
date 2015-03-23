@@ -40,8 +40,8 @@ class IosAlertWorker
 
       User.joins(:device, {:subscriptions => {:channel => :messages}})
           .where('devices.platform' => 'ios', 'messages.sent' => nil)
-          .pluck('devices.token','channels.id','channels.name','messages.title','messages.body','messages.id')
-          .each do |token, channel_id, channel_name, title, body, message_id, message_date|
+          .pluck('devices.token','channels.id','channels.name','messages.title','messages.body','messages.date','messages.id')
+          .each do |token, channel_id, channel_name, title, body, date, message_id|
         if title.nil? or title.empty?
           title = channel_name
         end
@@ -55,7 +55,7 @@ class IosAlertWorker
           content_available: true,                  # optional; any truthy value will set 'content-available' to 1
           custom: {
             channel: {id: channel_id, name: channel_name},
-            message: {id: message_id, date: message_date}
+            message: {id: message_id, date: date}
           }
         )
         pusher.push(notification)
