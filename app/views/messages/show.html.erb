@@ -3,7 +3,7 @@
     <li><%= link_to 'Channels', channels_path %></li>
     <li><%= link_to raw(@channel.name), @channel %></li>
     <li><%= link_to 'Messages', channel_messages_path(@channel) %></li>
-    <li class="active"><%= raw(@message.title || @message.id) %></li>
+    <li class="active"><%= "Message" %></li>
   </ol>
   <div class="pull-left">
     <h4>Message</h4>
