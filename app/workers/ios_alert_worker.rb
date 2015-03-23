@@ -34,10 +34,12 @@ class IosAlertWorker
         retries:     3                         # optional
       )
 
-      User.joins(:device).where('devices.platform = ?', 'ios').pluck('devices.token').each do |token|
+      User.joins(:device, {:subscriptions => {:channel => :messages}})
+          .where('devices.platform' => 'ios', 'messages.sent' => nil)
+          .pluck('devices.token','messages.title','messages.body','messages.id').each do |token, title, body, message_id|
         notification = Grocer::Notification.new(
           device_token:      token,
-          alert:             "Hello from Grocer!",
+          alert:             body,
           badge:             42,
           sound:             "siren.aiff",         # optional
           expiry:            Time.now + 60*60,     # optional; 0 is default, meaning the message is not stored
@@ -45,6 +47,8 @@ class IosAlertWorker
           content_available: true                  # optional; any truthy value will set 'content-available' to 1
         )
         pusher.push(notification)
+        message = Message.find(message_id)
+        message.update(sent: true) if message
       end
 
       feedback = Grocer.feedback(
