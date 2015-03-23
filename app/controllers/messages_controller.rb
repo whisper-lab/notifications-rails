@@ -4,7 +4,7 @@ class MessagesController < ApplicationController
   before_action :set_message, only: [:show, :edit, :update, :destroy]
 
   def index
-    @messages = @channel.messages.all
+    @messages = @channel.messages.order(date: :desc).all
   end
 
   def show
