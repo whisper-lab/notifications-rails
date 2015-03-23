@@ -2,13 +2,17 @@ class IosAlertWorker
   include Sidekiq::Worker
   include Sidetiq::Schedulable
 
-  # Sidetiq should schedule this job every half hour between 08:30 - 16:30 every Monday-Friday.
-  # Note: The job will be queued at this time, not executed.
-  recurrence do 
-    weekly(1).
-      day(:monday, :tuesday, :wednesday, :thursday, :friday).
-      hour_of_day((8..16).to_a).
-      minute_of_hour(0, 30) 
+  # # Sidetiq should schedule this job every half hour between 08:30 - 16:30 every Monday-Friday.
+  # # Note: The job will be queued at this time, not executed.
+  # recurrence do
+  #   weekly(1).
+  #     day(:monday, :tuesday, :wednesday, :thursday, :friday).
+  #     hour_of_day((8..16).to_a).
+  #     minute_of_hour(0, 30)
+  # end
+
+  recurrence do
+    minutely(1)
   end
 
   # Set the Sidekiq Queue to 'ios_alert_worker_queue', enable backtrace logging, and retry if the job fails
@@ -39,7 +43,7 @@ class IosAlertWorker
           .pluck('devices.token','messages.title','messages.body','messages.id').each do |token, title, body, message_id|
         notification = Grocer::Notification.new(
           device_token:      token,
-          alert:             body,
+          alert:             {title: title, body: body},
           badge:             42,
           sound:             "siren.aiff",         # optional
           expiry:            Time.now + 60*60,     # optional; 0 is default, meaning the message is not stored
