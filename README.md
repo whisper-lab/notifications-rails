@@ -28,6 +28,9 @@ GMAIL_PASSWORD=YOURGMAILPASSWORD
 DOMAIN_NAME=example.herokuapp.com
 API_MASTER_KEY=YOURLONGAPIMASTERKEY
 ```
+Get your developement pnscredentials certifitate file from Apple. (for sending push notifications using Apple PNS)
+
+And then place it in Amazon AWS S3 with S3_BUCKET_PNS name.
 ###### Start server
 ```shell
 $ foreman start
