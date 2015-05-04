@@ -3,6 +3,10 @@ Push Notification Service
 
 ####Steps
 
+First install needed gems(bundle) and prepare databases.
+
+###### Then
+
 ```shell
 $ cd /path/to/notifications-rails
 ```
